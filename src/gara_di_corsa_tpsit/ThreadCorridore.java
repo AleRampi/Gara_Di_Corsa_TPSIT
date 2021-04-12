@@ -15,7 +15,6 @@ public class ThreadCorridore extends Thread{
     @Override
     public void run() {
         tempoPartenza = System.nanoTime();
-        System.out.println("tempo partenza: " + tempoPartenza);
         for (int j = 0; j <= 100; j++) { //metri
             if (j == 100) {
                 System.out.println("Il corridore: " + nome + ", è arrivato!");
