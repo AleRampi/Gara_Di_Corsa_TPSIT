@@ -1,32 +1,48 @@
 package gara_di_corsa_tpsit;
 
-public class ThreadCorridore extends Thread{
+import com.sun.corba.se.impl.util.PackagePrefixChecker;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class ThreadCorridore extends Thread {
+
     private String nome;
-    private long tempoPartenza;
-    private long tempoArrivo;
+    private static Random r = new Random(System.currentTimeMillis());
+    
+    public ThreadCorridore(){
+    }
 
     public ThreadCorridore(String nome) {
         this.nome = nome;
-        this.tempoArrivo = 0;
-        this.tempoPartenza = 0;
     }
-   
-    
+
     @Override
     public void run() {
-        tempoPartenza = System.nanoTime();
-        for (int j = 0; j <= 100; j++) { //metri
-            if (j == 100) {
-                System.out.println("Il corridore: " + nome + ", è arrivato!");
-            }
+        for (int i = 0; i < 100; i++) { //metri
+            stampaMetri(i);
         }
-        tempoArrivo = System.nanoTime() - tempoPartenza;
+        try{
+            Thread.sleep(r.nextInt(10));
+        } catch (Exception e){
+            System.out.println("ERRORE: " + e);
+        }
+        stampaArrivo();
+        Classifica.aggiungiAllaClassifica(this);
     }
-
-    public long getTempoArrivo() {
-        return tempoArrivo;
+    
+    private void stampaMetri(int i){
+        System.out.println(nome + " ha percorso: " + i + "m");
     }
-
+    
+    private void stampaArrivo(){
+        System.out.println(nome + " è arrivato!");
+    }
+    
+    public void stampaClassifica(){
+        Classifica c = new Classifica();
+        System.out.println(c.toString());
+    }
+    
     public String getNome() {
         return nome;
     }

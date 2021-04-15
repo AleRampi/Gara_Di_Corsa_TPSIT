@@ -41,16 +41,13 @@ public class Gara {
         for (ThreadCorridore c : corridori) {
             c.start();
         }
+        for (ThreadCorridore c : corridori) {
+            c.join();
+        }
     }
 
     public void classifica() {
-        Collections.sort(corridori, Comparator.comparing(ThreadCorridore::getTempoArrivo));
-        stampaClassifica();
-    }
-
-    private void stampaClassifica() {
-        for (int i = 0; i < corridori.size(); i++) {
-            System.out.println((i + 1) + "° Classificato: " + corridori.get(i).getNome() + ", Tempo: " + corridori.get(i).getTempoArrivo());
-        }
+        ThreadCorridore c = new ThreadCorridore();
+        c.stampaClassifica();
     }
 }
