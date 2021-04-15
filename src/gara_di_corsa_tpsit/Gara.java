@@ -1,8 +1,6 @@
 package gara_di_corsa_tpsit;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class Gara {
@@ -13,7 +11,7 @@ public class Gara {
     public Gara() {
     }
 
-    public synchronized void nuovoCorridore(ThreadCorridore c) {
+    public void nuovoCorridore(ThreadCorridore c) {
         corridori.add(c);
     }
 
