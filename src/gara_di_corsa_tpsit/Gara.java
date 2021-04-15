@@ -1,10 +1,9 @@
 package gara_di_corsa_tpsit;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Scanner;
 
 public class Gara {
 
@@ -19,12 +18,11 @@ public class Gara {
     }
 
     public void aggiungiCorridori() {
-        InputStreamReader input = new InputStreamReader(System.in);
-        BufferedReader letturaInput = new BufferedReader(input);
+        Scanner input = new Scanner(System.in);
 
         try {
             System.out.print("Digita il numero di corridori: ");
-            numeroCorridori = Integer.valueOf(letturaInput.readLine()).intValue();
+            numeroCorridori = Integer.parseInt(input.nextLine());
         } catch (Exception e) {
             System.out.println("ERRORE: " + e.getMessage());
         }
@@ -32,7 +30,7 @@ public class Gara {
         for (int i = 0; i < numeroCorridori; i++) {
             try {
                 System.out.print("Nome corridore del corridore " + (i + 1) + ": ");
-                nuovoCorridore(new ThreadCorridore(letturaInput.readLine()));
+                nuovoCorridore(new ThreadCorridore(input.nextLine()));
             } catch (Exception e) {
                 System.out.println("ERRORE: " + e.getMessage());
             }
