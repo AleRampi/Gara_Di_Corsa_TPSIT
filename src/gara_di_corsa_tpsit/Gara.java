@@ -7,10 +7,10 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Gara {
-    
+
     private ArrayList<ThreadCorridore> corridori = new ArrayList<>();
     private int numeroCorridori;
-    
+
     public Gara() {
     }
 
@@ -38,21 +38,21 @@ public class Gara {
             }
         }
     }
-    
-    public void avviaGara() throws InterruptedException{
+
+    public void avviaGara() throws InterruptedException {
         for (ThreadCorridore c : corridori) {
             c.start();
         }
     }
-    
-    public void classifica(){
+
+    public void classifica() {
         Collections.sort(corridori, Comparator.comparing(ThreadCorridore::getTempoArrivo));
         stampaClassifica();
     }
-    private void stampaClassifica(){
-        for(int i = 0; i < corridori.size(); i++){
-            System.out.println((i+1) + "° Classificato: " + corridori.get(i).getNome() + ", Tempo: " + corridori.get(i).getTempoArrivo());
+
+    private void stampaClassifica() {
+        for (int i = 0; i < corridori.size(); i++) {
+            System.out.println((i + 1) + "° Classificato: " + corridori.get(i).getNome() + ", Tempo: " + corridori.get(i).getTempoArrivo());
         }
     }
-    
 }
