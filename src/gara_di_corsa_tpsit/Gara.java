@@ -13,7 +13,7 @@ public class Gara {
     public Gara() {
     }
 
-    public void nuovoCorridore(ThreadCorridore c) {
+    public synchronized void nuovoCorridore(ThreadCorridore c) {
         corridori.add(c);
     }
 

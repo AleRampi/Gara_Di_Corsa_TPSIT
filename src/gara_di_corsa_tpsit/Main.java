@@ -7,7 +7,6 @@ public class Main {
         gara.aggiungiCorridori();
         gara.avviaGara();
         gara.classifica();
-        
     }
     
 }
